@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ligar e Desligar</title>
+</head>
+<body>
+  <h2>Controle</h2>
+  <button id="btnLigar">Ligar</button>
+  <button id="btnDesligar">Desligar</button>
+
+  <p id="status"></p>
+
+  <script>
+    const status = document.getElementById("status");
+
+    // Função genérica para fazer o GET
+    function enviarComando(valor) {
+      const url = `https://api.thingspeak.com/update?api_key=QTDQZ67POPCHZJAG&field1=${valor}`;
+      
+      // Faz o GET sem recarregar
+      fetch(url, { method: 'GET', mode: 'no-cors' })
+        .then(response => {
+          return response.text();
+        })
+        .then(data => {
+          // Atualiza o status na tela
+          status.textContent = valor === 1 
+            ? "✅ Dispositivo LIGADO (field1=1)" 
+            : "⛔ Dispositivo DESLIGADO (field1=0)";
+        })
+        .catch(error => {
+          status.textContent = "Erro: " + error.message;
+        });
+    }
+
+    // Eventos dos botões
+    document.getElementById("btnLigar").addEventListener("click", () => enviarComando(1));
+    document.getElementById("btnDesligar").addEventListener("click", () => enviarComando(0));
+  </script>
+</body>
+</html>
