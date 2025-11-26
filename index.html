@@ -12,12 +12,21 @@
 
   <p id="status"></p>
 
+  <h3>📊 Gráfico em tempo real</h3>
+
+  <iframe 
+    width="450" 
+    height="260" 
+    style="border: 1px solid #cccccc;" 
+    src="https://thingspeak.mathworks.com/channels/3183297/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15">
+  </iframe>
+
   <script>
     const status = document.getElementById("status");
 
     // Função genérica para fazer o GET
     function enviarComando(valor) {
-      const url = `https://api.thingspeak.com/update?api_key=QTDQZ67POPCHZJAG&field1=${valor}`;
+      const url = `https://api.thingspeak.com/update?api_key=WTTUCOLHX0BCLCHM&field2=${valor}`;
       
       // Faz o GET sem recarregar
       fetch(url, { method: 'GET', mode: 'no-cors' })

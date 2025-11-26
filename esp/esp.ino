@@ -6,8 +6,8 @@ const char* ssid = "HTOIOT";
 const char* password = "iot123456";
 
 // *** ATENÇÃO: PREENCHER ESTES VALORES ***
-String readApiKey = "1D5DMIAWP95PLZ64"; // Chave de LEITURA do seu canal ThingSpeak
-const int ID_CANAL = 3138516;           // ID Numérico do seu Canal
+String readApiKey = "20T2RYQ36XEYEOHO"; // Chave de LEITURA do seu canal ThingSpeak
+const int ID_CANAL = 3183297;           // ID Numérico do seu Canal
 const int FIELD_DE_CONTROLE = 1;       // Usaremos o Field 1 para o comando (1 ou 0)
 // ****************************************
 
