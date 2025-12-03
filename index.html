@@ -29,15 +29,17 @@
       const url = `https://api.thingspeak.com/update?api_key=WTTUCOLHX0BCLCHM&field2=${valor}`;
       
       // Faz o GET sem recarregar
-      fetch(url, { method: 'GET', mode: 'no-cors' })
+      fetch(url, { method: 'GET' })
         .then(response => {
+          
           return response.text();
         })
         .then(data => {
-          // Atualiza o status na tela
+          if (!data) return; // evita erro se já tratou o 304
+
           status.textContent = valor === 1 
-            ? "✅ Dispositivo LIGADO (field1=1)" 
-            : "⛔ Dispositivo DESLIGADO (field1=0)";
+            ? "✅ Dispositivo LIGADO (field2=1)"
+            : "⛔ Dispositivo DESLIGADO (field2=0)";
         })
         .catch(error => {
           status.textContent = "Erro: " + error.message;
